@@ -1,8 +1,11 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SCEToolSharp;
 
+[SuppressMessage("ReSharper", "UnusedType.Global")]
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
 public static unsafe class LibSceToolSharp {
 	[DllImport("scetool")]
 	private static extern void frontend_print_infos(byte* file);

@@ -1,10 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GenerateLibraryLayout>true</GenerateLibraryLayout>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <Authors>LittleBigRefresh</Authors>
+        <Title>SCEToolSharp</Title>
+        <PackageId>SCEToolSharp</PackageId>
+        <Description>A wrapper around libscetool</Description>
+        <RepositoryUrl>https://github.com/LittleBigRefresh/SCEToolSharp</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/LittleBigRefresh/SCEToolSharp</PackageProjectUrl>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="runtimes\**">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Pack>true</Pack>
+            <PackagePath>runtimes</PackagePath>
+        </Content>
+    </ItemGroup>
 </Project>
