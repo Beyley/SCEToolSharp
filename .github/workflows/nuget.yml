@@ -28,5 +28,5 @@ jobs:
         run: dotnet pack -c Release /p:Version=${VERSION} --no-restore
       - name: Upload Package
         run: dotnet nuget push SCEToolSharp/bin/Release/SCEToolSharp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
-      #   env:
-      #     NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+        env:
+          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
