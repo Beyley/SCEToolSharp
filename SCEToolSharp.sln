@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCEToolSharp", "SCEToolSharp\SCEToolSharp.csproj", "{ED790018-A292-440D-AFD9-54C397DC8942}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCEToolSharp.Test", "SCEToolSharp.Test\SCEToolSharp.Test.csproj", "{20D9D87A-5343-467E-B949-58247665083B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{ED790018-A292-440D-AFD9-54C397DC8942}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED790018-A292-440D-AFD9-54C397DC8942}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED790018-A292-440D-AFD9-54C397DC8942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20D9D87A-5343-467E-B949-58247665083B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20D9D87A-5343-467E-B949-58247665083B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20D9D87A-5343-467E-B949-58247665083B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20D9D87A-5343-467E-B949-58247665083B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
