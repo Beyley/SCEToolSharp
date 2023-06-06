@@ -6,19 +6,22 @@ namespace SCEToolSharp;
 
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
-public static unsafe class LibSceToolSharp
+public static unsafe partial class LibSceToolSharp
 {
-	[DllImport("scetool")]
-	private static extern int libscetool_init();
+	[LibraryImport("scetool")]
+	private static partial int libscetool_init();
 	
-	[DllImport("scetool")]
-	private static extern void frontend_print_infos(byte* file);
+	[LibraryImport("scetool")]
+	private static partial void frontend_print_infos(byte* file);
 
-	[DllImport("scetool")]
-	private static extern void frontend_decrypt(byte* fileIn, byte* fileOut);
+	[LibraryImport("scetool")]
+	private static partial void frontend_decrypt(byte* fileIn, byte* fileOut);
 
-	[DllImport("scetool")]
-	private static extern void frontend_encrypt(byte* fileIn, byte* fileOut);
+	[LibraryImport("scetool")]
+	private static partial void frontend_encrypt(byte* fileIn, byte* fileOut);
+
+	[LibraryImport("scetool")]
+	private static partial void rap_set_directory(byte* dirPath);
 
 	static LibSceToolSharp()
 	{
@@ -43,5 +46,13 @@ public static unsafe class LibSceToolSharp
 	{
 		fixed (byte* filePtr = Encoding.ASCII.GetBytes(file + "\0"))
 			frontend_print_infos(filePtr);
+	}
+
+	public static void SetRapDirectory(string dirPath)
+	{
+		if (!Directory.Exists(dirPath)) throw new DirectoryNotFoundException(dirPath);
+		
+		fixed (byte* dirPtr = Encoding.ASCII.GetBytes(dirPath + '\0'))
+			rap_set_directory(dirPtr);
 	}
 }
