@@ -11,22 +11,4 @@
       <ProjectReference Include="..\SCEToolSharp\SCEToolSharp.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-        <Content Include="..\SCEToolSharp\runtimes\linux-x64\native\libscetool.so">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <Pack>true</Pack>
-            <PackagePath>runtimes</PackagePath>
-        </Content>
-        <Content Include="..\SCEToolSharp\runtimes\win-x64\native\scetool.dll">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <Pack>true</Pack>
-            <PackagePath>runtimes</PackagePath>
-        </Content>
-        <Content Include="..\SCEToolSharp\runtimes\osx-x64\native\libscetool.dylib">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <Pack>true</Pack>
-            <PackagePath>runtimes</PackagePath>
-        </Content>
-    </ItemGroup>
-
 </Project>
