@@ -22,6 +22,9 @@ public static unsafe partial class LibSceToolSharp
 
 	[LibraryImport("scetool")]
 	private static partial void rap_set_directory(byte* dirPath);
+	
+	[LibraryImport("scetool")]
+	private static partial void set_disc_encrypt_options();
 
 	static LibSceToolSharp()
 	{
@@ -54,5 +57,10 @@ public static unsafe partial class LibSceToolSharp
 		
 		fixed (byte* dirPtr = Encoding.UTF8.GetBytes(dirPath + '\0'))
 			rap_set_directory(dirPtr);
+	}
+
+	public static void SetDiscEncryptOptions()
+	{
+		set_disc_encrypt_options();
 	}
 }
