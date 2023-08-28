@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -28,7 +29,8 @@ public static unsafe partial class LibSceToolSharp
 
 	static LibSceToolSharp()
 	{
-		libscetool_init();
+		int result = libscetool_init();
+		Debug.WriteLine(nameof(libscetool_init) + " returned " + result);
 	}
 
 	public static void Decrypt(string input, string output)
@@ -59,8 +61,6 @@ public static unsafe partial class LibSceToolSharp
 			rap_set_directory(dirPtr);
 	}
 
-	public static void SetDiscEncryptOptions()
-	{
-		set_disc_encrypt_options();
-	}
+	public static void SetDiscEncryptOptions() => set_disc_encrypt_options();
+	public static int Init() => libscetool_init();
 }
