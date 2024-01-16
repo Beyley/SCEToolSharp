@@ -101,9 +101,9 @@ public static unsafe partial class LibSceToolSharp
 			set_act_dat_file_path(dirPtr);
 	}
 	
-	public static void SetRifFilePath(string filePath)
+	public static void SetRifPath(string filePath)
 	{
-		if (!File.Exists(filePath)) throw new FileNotFoundException(filePath);
+		if (!Directory.Exists(filePath)) throw new DirectoryNotFoundException(filePath);
 		
 		fixed (byte* dirPtr = Encoding.UTF8.GetBytes(filePath + '\0'))
 			set_rif_file_path(dirPtr);
