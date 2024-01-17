@@ -25,7 +25,7 @@ public static unsafe partial class LibSceToolSharp
 	private static partial void rap_set_directory(byte* dirPath);
 	
 	[LibraryImport("scetool")]
-	private static partial void set_idps_file_path(byte* filePath);
+	private static partial void set_idps_key(byte* key);
 	
 	[LibraryImport("scetool")]
 	private static partial void set_act_dat_file_path(byte* filePath);
@@ -85,12 +85,10 @@ public static unsafe partial class LibSceToolSharp
 			rap_set_directory(dirPtr);
 	}
 		
-	public static void SetIdpsFilePath(string filePath)
+	public static void SetIdpsKey(byte[] key)
 	{
-		if (!File.Exists(filePath)) throw new FileNotFoundException(filePath);
-		
-		fixed (byte* dirPtr = Encoding.UTF8.GetBytes(filePath + '\0'))
-			set_idps_file_path(dirPtr);
+		fixed (byte* keyPtr = key)
+			set_idps_key(keyPtr);
 	}
 	
 	public static void SetActDatFilePath(string filePath)
