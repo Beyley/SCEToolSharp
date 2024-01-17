@@ -43,7 +43,7 @@ public static unsafe partial class LibSceToolSharp
 	private static partial void set_npdrm_content_id(byte* contentId);
 	
 	[LibraryImport("scetool")]
-	private static partial byte* get_last_content_id();
+	private static partial byte* get_content_id(byte* path);
 
 	static LibSceToolSharp()
 	{
@@ -109,13 +109,18 @@ public static unsafe partial class LibSceToolSharp
 			set_rif_file_path(dirPtr);
 	}
 	
-	public static string GetLastContentId()
+	public static string GetContentId(string path)
 	{
-		byte* data = get_last_content_id();
+		if (!File.Exists(path)) throw new FileNotFoundException(path);
 
-		const int contentIdSize = 0x30;
-
-		return Encoding.UTF8.GetString(new Span<byte>(data, contentIdSize));
+		fixed (byte* pathPtr = Encoding.UTF8.GetBytes(path + "\0"))
+		{
+			byte* data = get_content_id(pathPtr);
+			
+			const int contentIdSize = 0x30;
+			
+			return Encoding.UTF8.GetString(new Span<byte>(data, contentIdSize));
+		}
 	}
 
 	public static void SetDiscEncryptOptions() => set_disc_encrypt_options();
