@@ -107,13 +107,18 @@ public static unsafe partial class LibSceToolSharp
 			set_rif_file_path(dirPtr);
 	}
 	
-	public static string GetContentId(string path)
+	public static string? GetContentId(string path)
 	{
 		if (!File.Exists(path)) throw new FileNotFoundException(path);
 
 		fixed (byte* pathPtr = Encoding.UTF8.GetBytes(path + "\0"))
 		{
 			byte* data = get_content_id(pathPtr);
+
+			if (data == null)
+			{
+				return null;
+			}
 			
 			const int contentIdSize = 0x30;
 			
